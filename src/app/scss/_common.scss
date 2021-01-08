@@ -20,19 +20,8 @@
   font-size: 26px;
 }
 .card{
-  cursor: pointer;
   min-height: 118px;
   margin-bottom: 15px;
-  &::after{
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: $success_color;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    border-radius: 20px;
-  }
   &.disabled{
     pointer-events: none;
     background-color: $white_color;
