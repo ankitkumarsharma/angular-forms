@@ -33,3 +33,8 @@
     border-color: $primary_color;
   }
 }
+.error{
+  font-size: 12px;
+  font-style: italic;
+  color: $error_color;
+}
