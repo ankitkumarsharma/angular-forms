@@ -8,9 +8,9 @@
             <form [formGroup]="regForm" (ngSubmit)="onSubmit(regForm.value)">
               <div class="form-group">
                 <label for="">First Name</label>
-                <input type="text" [ngClass]="{ 'is-invalid': submitted && regForm.controls.firstName.errors }" formControlName="firstName" class="form-control" placeholder="Enter your first name">
-                <div *ngIf="submitted && regForm.controls.firstName.errors">
-                  <p class="error" *ngIf="regForm.controls.firstName.errors">This field is required</p>
+                <input type="text" [ngClass]="{ 'is-invalid': submitted && fc.firstName.errors }" formControlName="firstName" class="form-control" placeholder="Enter your first name">
+                <div *ngIf="submitted && fc.firstName.errors">
+                  <p class="error" *ngIf="fc.firstName.errors">This field is required</p>
                 </div>
               </div>
               <div class="form-group">
@@ -19,10 +19,10 @@
               </div>
               <div class="form-group">
                 <label for="">Email Address</label>
-                <input type="email" [ngClass]="{ 'is-invalid': submitted && regForm.controls.email.errors }" formControlName="email" class="form-control" placeholder="Enter your email address">
-                <div *ngIf="submitted && regForm.controls.email.errors">
-                  <p class="error" *ngIf="regForm.controls.email.errors?.required">This field is required</p>
-                  <p class="error" *ngIf="regForm.controls.email.errors?.email">Email format is required</p>
+                <input type="email" [ngClass]="{ 'is-invalid': submitted && fc.email.errors }" formControlName="email" class="form-control" placeholder="Enter your email address">
+                <div *ngIf="submitted && fc.email.errors">
+                  <p class="error" *ngIf="fc.email.errors?.required">This field is required</p>
+                  <p class="error" *ngIf="fc.email.errors?.email">Email format is required</p>
                 </div>
               </div>
               <div class="form-group">

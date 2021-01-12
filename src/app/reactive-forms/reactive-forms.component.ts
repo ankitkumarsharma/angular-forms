@@ -21,6 +21,9 @@ export class ReactiveFormsComponent implements OnInit {
       address: ['']
     });
   }
+  get fc(){
+    return this.regForm.controls;
+  }
   onSubmit(value:ReactiveFormType){
     this.submitted = true;
     if(this.regForm.valid){
