@@ -1,0 +1,100 @@
+<h3 class="ak-sub-title">Form 2 for reusable form control</h3>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit(regForm.value)">
+        <div class="row">
+          <div class="col-6">
+            <h2 class="ak-title">Reactive Form 2</h2>
+            <div class="form-group">
+              <label for="">First Name</label>
+              <input type="text" [ngClass]="{ 'is-invalid': submitted && fc.firstName.errors }" formControlName="firstName" class="form-control" placeholder="Enter your first name">
+              <div *ngIf="submitted && fc.firstName.errors">
+                <p class="error" *ngIf="fc.firstName.errors">This field is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Last Name</label>
+              <input type="text" formControlName="lastName" class="form-control" placeholder="Enter your last name">
+            </div>
+            <div class="form-group">
+              <label for="">Email Address</label>
+              <input type="email" [ngClass]="{ 'is-invalid': submitted && fc.email.errors }" formControlName="email" class="form-control" placeholder="Enter your email address">
+              <div *ngIf="submitted && fc.email.errors">
+                <p class="error" *ngIf="fc.email.errors?.required">This field is required</p>
+                <p class="error" *ngIf="fc.email.errors?.email">Email format is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Address</label>
+              <input type="text" formControlName="address" class="form-control" placeholder="Enter your address">
+            </div>
+              <div class="form-group">
+                <label for="">User List</label>
+                <app-user-list [parentForm]="regForm"></app-user-list>
+              </div>
+          </div>
+          <div class="col-6">
+            <h2 class="ak-title">Updated Form Data</h2>
+            <table *ngIf="getData" class="table">
+              <tr>
+                <th>
+                  First Name
+                </th>
+                <td>
+                  {{getData.firstName}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Last Name
+                </th>
+                <td>
+                  {{getData.lastName}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Email Address
+                </th>
+                <td>
+                  {{getData.email}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  Address
+                </th>
+                <td>
+                  {{getData.address}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  User List Value
+                </th>
+                <td>
+                  {{getData.userListControl}}
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <button type="submit" class="primary-btn">Submit</button>
+              </li>
+              <li class="list-inline-item">
+                <button type="reset" class="primary-btn">Reset</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
