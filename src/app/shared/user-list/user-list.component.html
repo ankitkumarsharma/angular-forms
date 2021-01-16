@@ -1,0 +1,7 @@
+<div [formGroup]="parentForm">
+  <div class="form-group">
+    <select formControlName="userListControl" class="form-control">
+      <option *ngFor="let item of userList" [value]="item.value">{{item.name}}</option>
+    </select>
+  </div>
+</div>
