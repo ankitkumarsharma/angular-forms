@@ -10,7 +10,7 @@ import { ReusableFormType } from 'src/app/core/app.types';
 export class Form2Component implements OnInit {
 
   regForm!: FormGroup;
-  getData!: ReusableFormType;
+  getData!: any;
   submitted = false;
   constructor(private _fb:FormBuilder) { }
 
@@ -25,7 +25,7 @@ export class Form2Component implements OnInit {
   get fc(){
     return this.regForm.controls;
   }
-  onSubmit(value:ReusableFormType){
+  onSubmit(value:any){
     this.submitted = true;
     if(this.regForm.valid){
       this.getData = value;
