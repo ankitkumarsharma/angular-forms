@@ -1,4 +1,4 @@
-<h3 class="ak-sub-title">Form 2 for reusable form control</h3>
+<h3 class="ak-sub-title">Form 2 for reusable form control (Multiple)</h3>
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -32,7 +32,11 @@
             </div>
               <div class="form-group">
                 <label for="">User List</label>
-                <app-user-list [parentForm]="regForm"></app-user-list>
+                <app-user-list [isRequired]="true" [controlName]="'list1'" [parentForm]="regForm"></app-user-list>
+              </div>
+              <div class="form-group">
+                <label for="">User List</label>
+                <app-user-list [controlName]="'list2'" [parentForm]="regForm"></app-user-list>
               </div>
           </div>
           <div class="col-6">
@@ -72,10 +76,18 @@
               </tr>
               <tr>
                 <th>
-                  User List Value
+                  User List 1 Value
                 </th>
                 <td>
-                  {{getData.userListControl}}
+                  {{getData.list1}}
+                </td>
+              </tr>
+              <tr>
+                <th>
+                  User List 2 Value
+                </th>
+                <td>
+                  {{getData.list2}}
                 </td>
               </tr>
             </table>
