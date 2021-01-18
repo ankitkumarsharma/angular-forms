@@ -12,6 +12,7 @@ export class Form2Component implements OnInit {
   regForm!: FormGroup;
   getData!: any;
   submitted = false;
+  list2Value = 'ankit';
   constructor(private _fb:FormBuilder) { }
 
   ngOnInit(): void {

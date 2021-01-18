@@ -11,6 +11,7 @@ export class UserListComponent implements OnInit {
   @Input() parentForm!: FormGroup;
   @Input() controlName!:string;
   @Input() isRequired!:boolean;
+  @Input() editControl!:string;
   userList = USER_LIST;
   userListControl: FormControl = new FormControl('');
   constructor() { }
@@ -18,20 +19,21 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     if(!this.controlName){
       this.controlName = 'userListControl';
-      this.parentForm.addControl(this.controlName, this.userListControl)
-      if(this.isRequired){
-        this.parentForm.controls[this.controlName].setValidators([
-          Validators.required
-        ]);
-      }
+      this.addControl();
     } else {
-      this.parentForm.addControl(this.controlName, this.userListControl);
+      this.addControl();
+    }
+  }
+  addControl(){
+    this.parentForm.addControl(this.controlName, this.userListControl);
+     if(this.editControl){
+      this.parentForm.controls[this.controlName].setValue(this.editControl);
+     }
       if(this.isRequired){
         this.parentForm.controls[this.controlName].setValidators([
           Validators.required
         ]);
       }
-    }
   }
   get fc(){
     return this.parentForm.get(this.controlName)?.invalid && this.parentForm.get(this.controlName)?.touched;
