@@ -11,3 +11,8 @@ export interface ReusableFormType {
   address: string,
   userListControl: string
 }
+export interface DynamicFormsType {
+  label: string,
+  name: string,
+  type: string
+}

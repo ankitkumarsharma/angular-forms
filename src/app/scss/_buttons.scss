@@ -16,6 +16,10 @@
   @extend .btn;
   background-color: $primary_color;
 }
+.secondary-btn{
+  @extend .btn;
+  background-color: $tri_color;
+}
 .sm-btn{
   @extend .btn;
   background-color: $primary_color;

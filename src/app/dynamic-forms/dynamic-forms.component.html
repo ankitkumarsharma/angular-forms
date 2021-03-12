@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="dynamicForm">
+        <div class="row">
+          <div class="col-md-6">
+            <div *ngFor="let item of dynamicFormArr" class="row form-group">
+              <div class="col-md-5">
+                <label for="">
+                  {{item.label}}
+                </label>
+              </div>
+              <div class="col-md-7">
+                <container-element [ngSwitch]="item.type">
+                  <input *ngSwitchCase="'text'" [formControlName]="item.name" class="form-control" type="text">
+                  <input *ngSwitchCase="'password'" [formControlName]="item.name" class="form-control" type="password">
+                  <textarea *ngSwitchCase="'textarea'" [formControlName]="item.name" class="form-control" cols="30" rows="4"></textarea>
+                  <input *ngSwitchCase="'checkbox'" [formControlName]="item.name" type="checkbox">
+                  <input *ngSwitchDefault class="form-control" [formControlName]="item.name" type="text">
+                </container-element>
+              </div>
+            </div>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <button type="button" (click)="onResetForm()" class="secondary-btn">Reset</button>
+              </li>
+              <li class="list-inline-item">
+                <button type="submit" (click)="onSubmitForm()" class="primary-btn">Submit</button>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <pre>
+              {{formData | json}}
+            </pre>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
