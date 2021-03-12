@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserListComponent } from './shared/user-list/user-list.component';
 import { Form1Component } from './forReusable/form1/form1.component';
 import { Form2Component } from './forReusable/form2/form2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AksConfirmDialogComponent } from './shared/dialog/aks-confirm-dialog/aks-confirm-dialog.component';
+import { AksFormDialogComponent } from './shared/dialog/aks-form-dialog/aks-form-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +25,17 @@ import { Form2Component } from './forReusable/form2/form2.component';
     TemplateFormsComponent,
     UserListComponent,
     Form1Component,
-    Form2Component
+    Form2Component,
+    AksConfirmDialogComponent,
+    AksFormDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
