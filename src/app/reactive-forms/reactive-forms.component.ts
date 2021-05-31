@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ReactiveFormType } from '../core/app.types';
 
 @Component({
@@ -18,11 +18,20 @@ export class ReactiveFormsComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: [''],
       email: ['', [Validators.required, Validators.email]],
-      address: ['']
+      address: ['',[this.customValidator()]]
     });
   }
   get fc(){
     return this.regForm.controls;
+  }
+  customValidator(): ValidatorFn{
+    return (control: AbstractControl)=>{
+      if(control.value){
+        return null;
+      } else {
+        return {errorMsg: `This is a customm validator error message`}
+      }
+    }
   }
   onSubmit(value:ReactiveFormType){
     this.submitted = true;
