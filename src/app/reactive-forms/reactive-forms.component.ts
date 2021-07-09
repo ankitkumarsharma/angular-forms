@@ -20,6 +20,17 @@ export class ReactiveFormsComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       address: ['',[this.customValidator()]]
     });
+    this.onChangeFormValues();
+  }
+  onChangeFormValues(){
+    this.regForm.get("firstName")?.valueChanges.subscribe((value)=>{ 
+      if(value){
+        this.regForm.get("lastName")?.patchValue("Sharma ji");
+      } else {
+        this.regForm.get("lastName")?.patchValue(""); 
+      }
+      this.regForm.get("lastName")?.updateValueAndValidity();
+    })
   }
   get fc(){
     return this.regForm.controls;
