@@ -55,7 +55,7 @@
                 </div>
                 <hr/>
                 <!---dynamic form start-->
-                <div *ngIf="dynamicFormArr" class="row">
+                <div *ngIf="dynamicFormArr.length > 0" class="row">
                   <div class="col">
                     <form [formGroup]="dynamicForm">
                       <div class="row">
@@ -90,7 +90,7 @@
                         </div>
                         <div class="col-md-6">
                           <pre>
-                            <!----data-->
+                            {{dynamicFormData | json}}
                           </pre>
                         </div>
                       </div>

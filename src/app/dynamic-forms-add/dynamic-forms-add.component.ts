@@ -15,6 +15,7 @@ export class DynamicFormsAddComponent implements OnInit {
   dynamicForm!:FormGroup;
   dynamicFormArr:DynamicFormArrType[] = [];
   dropdownOption_flag!:boolean;
+  dynamicFormData:any;
   constructor(private _fb:FormBuilder) { }
 
   ngOnInit(): void {
@@ -39,8 +40,19 @@ export class DynamicFormsAddComponent implements OnInit {
       this.addForm.markAllAsTouched();
     }
     this.addDynamicForm(); 
+    this.addFormResetFn();
   }
-  onSubmitForm(){}
+  addFormResetFn(){
+    this.addForm.reset();
+    this.submitted = false;
+    this.addForm.patchValue({
+      label: '',
+      control: '',
+    });
+  }
+  onSubmitForm(){
+    this.dynamicFormData = this.dynamicForm.value;
+  }
   addDynamicForm(){
     this.dynamicForm = this._fb.group({});
     this.dynamicFormArr.forEach((item)=>{
