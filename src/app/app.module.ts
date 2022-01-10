@@ -16,6 +16,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AksConfirmDialogComponent } from './shared/dialog/aks-confirm-dialog/aks-confirm-dialog.component';
 import { AksFormDialogComponent } from './shared/dialog/aks-form-dialog/aks-form-dialog.component';
 import { DynamicFormsComponent } from './dynamic-forms/dynamic-forms.component';
+import { DynamicFormsAddComponent } from './dynamic-forms-add/dynamic-forms-add.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DynamicFormsComponent } from './dynamic-forms/dynamic-forms.component';
     Form2Component,
     AksConfirmDialogComponent,
     AksFormDialogComponent,
-    DynamicFormsComponent
+    DynamicFormsComponent,
+    DynamicFormsAddComponent
   ],
   imports: [
     BrowserModule,

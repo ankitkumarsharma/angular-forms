@@ -1,4 +1,4 @@
-import { DynamicFormsType } from "./app.types"
+import { DynamicFormsDropdownListType, DynamicFormsType } from "./app.types"
 
 export const USER_LIST = [
   {name:'Select User', value:''},
@@ -18,4 +18,17 @@ export const DYNAMIC_FORMS: DynamicFormsType[] = [
   {label:'Contact No.', name:'contact', type:'text'},
   {label:'Service Required', name:'service', type:'checkbox'},
   {label:'Service Bond', name:'bond', type:'checkbox'},
+]
+
+export const DYNAMIC_FORMS_DROPDOWN_LIST: DynamicFormsDropdownListType[] = [
+  {label:'Select', type: ''},
+  {label:'Text', type: 1},
+  {label:'Email', type: 2},
+  {label:'Password', type: 3},
+  {label:'Dropdown', type: 4},
+  {label:'Checkbox', type: 5},
+  {label:'RadioButton', type: 6},
+  {label:'TextArea', type: 7},
+  {label:'Date', type: 8},
+  {label:'Number', type: 9},
 ]

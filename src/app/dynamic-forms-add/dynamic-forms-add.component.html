@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="ak-sub-title">Please add Dynamic Forms by fill this form</h4>
+                        <form [formGroup]="addForm">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Label Name</label>
+                                        <input type="text" [ngClass]="{ 'is-invalid': submitted && fc.label.errors }" formControlName="label" class="form-control" placeholder="Enter your label name">
+                                        <div *ngIf="submitted && fc.label.errors">
+                                          <p class="error" *ngIf="fc.label.errors">This field is required</p>
+                                        </div>
+                                      </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="">Control Name</label>
+                                        <select [ngClass]="{ 'is-invalid': submitted && fc.control.errors }" formControlName="control" class="form-control">
+                                            <option *ngFor="let item of dropdownFormsList" [value]="item.type">{{item.label}}</option>
+                                        </select>
+                                        <div *ngIf="submitted && fc.control.errors">
+                                          <p class="error" *ngIf="fc.control.errors">This field is required</p>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            <ul class="list-inline">
+                              <li class="list-inline-item">
+                                <button type="submit" (click)="onAdd()" class="primary-btn">Add Form</button>
+                              </li>
+                              <li class="list-inline-item">
+                                <button type="reset" class="primary-btn">Reset</button>
+                              </li>
+                            </ul>
+                          </form>
+                    </div>
+                    <div class="col"></div>
+                </div>
+                <hr/>
+            </div>
+        </div>    
+    </div>
+</div>

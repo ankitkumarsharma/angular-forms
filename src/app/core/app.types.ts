@@ -16,3 +16,8 @@ export interface DynamicFormsType {
   name: string,
   type: string
 }
+
+export interface DynamicFormsDropdownListType {
+  label: string,
+  type: number | ''
+}
