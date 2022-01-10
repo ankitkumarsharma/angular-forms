@@ -19,7 +19,7 @@
                                 <div class="col">
                                     <div class="form-group">
                                         <label for="">Control Name</label>
-                                        <select [ngClass]="{ 'is-invalid': submitted && fc.control.errors }" formControlName="control" class="form-control">
+                                        <select (change)="onControlChange($event.target)" [ngClass]="{ 'is-invalid': submitted && fc.control.errors }" formControlName="control" class="form-control">
                                             <option *ngFor="let item of dropdownFormsList" [value]="item.type">{{item.label}}</option>
                                         </select>
                                         <div *ngIf="submitted && fc.control.errors">
@@ -27,20 +27,76 @@
                                         </div>
                                       </div>
                                 </div>
+                                <div [hidden]="!dropdownOption_flag" class="col">
+                                  <div class="form-group">
+                                      <label for="">Add Dropdown Values</label>
+                                      <div class="input-group mb-3">
+                                        <input type="text" [ngClass]="{ 'is-invalid': submitted && fc.dropdownData.errors }" formControlName="dropdownData" class="form-control" placeholder="Enter your value">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-outline-secondary primary-btn" type="button">Add</button>
+                                        </div>
+                                      </div>
+                                      <div *ngIf="submitted && fc.control.errors">
+                                        <p class="error" *ngIf="fc.control.errors">This field is required</p>
+                                      </div>
+                                    </div>
+                              </div>
                             </div>
                             <ul class="list-inline">
                               <li class="list-inline-item">
-                                <button type="submit" (click)="onAdd()" class="primary-btn">Add Form</button>
+                                <button type="submit" (click)="onAddControl()" class="primary-btn">Add Control</button>
                               </li>
                               <li class="list-inline-item">
                                 <button type="reset" class="primary-btn">Reset</button>
                               </li>
                             </ul>
                           </form>
-                    </div>
-                    <div class="col"></div>
+                    </div> 
                 </div>
                 <hr/>
+                <!---dynamic form start-->
+                <div *ngIf="dynamicFormArr" class="row">
+                  <div class="col">
+                    <form [formGroup]="dynamicForm">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div *ngFor="let item of dynamicFormArr" class="row form-group">
+                            <div class="col-md-5">
+                              <label for="">
+                                {{item.label}}
+                              </label>
+                            </div>
+                            <div class="col-md-7">
+                              <container-element [ngSwitch]="item.control">
+                                <input *ngSwitchCase="1" [formControlName]="item.label" class="form-control" type="text">
+                                <input *ngSwitchCase="2" [formControlName]="item.label" class="form-control" type="email">
+                                <input *ngSwitchCase="3" [formControlName]="item.label" class="form-control" type="password">
+                                <select *ngSwitchCase="4" [formControlName]="item.label" class="form-control">
+                                  <option value=""></option>
+                                </select>
+                                <input *ngSwitchCase="5" [formControlName]="item.label" type="checkbox">
+                                <input *ngSwitchCase="6" [formControlName]="item.label" type="radio">
+                                <textarea *ngSwitchCase="7" [formControlName]="item.label" class="form-control" cols="30" rows="4"></textarea>
+                                <input *ngSwitchCase="8" [formControlName]="item.label" class="form-control" type="date">
+                                <input *ngSwitchCase="9" [formControlName]="item.label" class="form-control" type="number">
+                              </container-element>
+                            </div>
+                          </div>
+                          <ul class="list-inline">
+                            <li class="list-inline-item">
+                              <button type="submit" (click)="onSubmitForm()" class="primary-btn">Submit</button>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="col-md-6">
+                          <pre>
+                            <!----data-->
+                          </pre>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
             </div>
         </div>    
     </div>
